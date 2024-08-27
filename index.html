@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chessboard</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: monospace;
+        }
+
+        .chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 64px);
+            grid-template-rows: repeat(8, 64px);
+        }
+
+        .chessboard div {
+            width: 64px;
+            height: 64px;
+            text-align: center;
+            line-height: 64px;
+            font-size: 52px;
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+        function createChessboard(size) {
+            let chessboardHTML = '';
+            for (let row = 0; row < size; row++) {
+                for (let col = 0; col < size; col++) {
+                    const isBlack = (row + col) % 2 === 0;
+                    chessboardHTML += `<div class="${isBlack ? 'black' : 'white'}">${isBlack ? '*' : '#'}</div>`;
+                }
+            }
+            document.body.innerHTML = `<div class="chessboard">${chessboardHTML}</div>`;
+        }
+
+        createChessboard(8);
+    </script>
+</body>
+</html>
